@@ -148,11 +148,11 @@ def process_image(image, query, caption_model=CAPTION_MODEL):
     
     return response
 
-
+from my_functions import process_image2 # I replaced the LLM, because I do not have the other API_KEY
 def generate_api(images, query, caption_model=CAPTION_MODEL):
     icon_map = {}
     with concurrent.futures.ThreadPoolExecutor() as executor:
-        futures = {executor.submit(process_image, image, query, caption_model=caption_model): i for i, image in enumerate(images)}
+        futures = {executor.submit(process_image2, image, query, caption_model=caption_model): i for i, image in enumerate(images)}
         
         for future in concurrent.futures.as_completed(futures):
             i = futures[future]
