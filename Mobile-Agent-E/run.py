@@ -7,7 +7,7 @@ import json
 import shutil
 import time
 
-def main():
+def main(run_name, setting, instruction):
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--seed", type=int, default=1234)
@@ -28,6 +28,12 @@ def main():
 
     args = parser.parse_args()
     torch.manual_seed(args.seed)
+
+    if __name__ == "__main__":
+        print("changing settings")
+        args.instruction = instruction
+        args.run_name = run_name
+        args.setting = setting
 
     if args.log_root is None:
         args.log_root = f"logs/{REASONING_MODEL}/mobile_agent_E"
@@ -152,5 +158,8 @@ def main():
             json.dump(error_tasks, f, indent=4)
 
 if __name__ == "__main__":
-    main()
+    r = "my_testing"
+    s = "individual"
+    i = "Find me at least two survery papers on Large Language Models. Check the detailed abstract of the most cited one. And then create a new note in Notes and add the titles the papers you found. Also include the abstract of the most cited paper."
+    main(run_name=r, setting=s, instruction=i)
 

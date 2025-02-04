@@ -39,6 +39,8 @@ BACKBONE_TYPE = os.environ.get("BACKBONE_TYPE", default="OpenAI") # "OpenAI" or 
 assert BACKBONE_TYPE in ["OpenAI", "Gemini", "Claude"], "Unknown BACKBONE_TYPE"
 print("### Using BACKBONE_TYPE:", BACKBONE_TYPE)
 
+
+#Print here are the keys
 OPENAI_API_URL = "https://api.openai.com/v1/chat/completions"
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", default=None)
 
@@ -59,7 +61,7 @@ elif BACKBONE_TYPE == "Claude":
     KNOWLEDGE_REFLECTION_MODEL = "claude-3-5-sonnet-20241022"
 
 ## you can specify a jsonl file path for tracking API usage
-USAGE_TRACKING_JSONL = None # e.g., usage_tracking.jsonl
+USAGE_TRACKING_JSONL = "usage_tracking.json" # e.g., usage_tracking.jsonl
 
 ## Perceptor configs
 # Choose between "api" and "local". api: use the qwen api. local: use the local qwen checkpoint
@@ -326,6 +328,7 @@ class Perceptor:
             images = sorted(images, key=lambda x: int(x.split('/')[-1].split('.')[0]))
             image_id = [int(image.split('/')[-1].split('.')[0]) for image in images]
             icon_map = {}
+            #TODO this needs to be changed to ChatGPT
             prompt = 'This image is an icon from a phone screen. Please briefly describe the shape and color of this icon in one sentence.'
             if CAPTION_CALL_METHOD == "local":
                 for i in range(len(images)):
