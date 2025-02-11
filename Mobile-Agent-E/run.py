@@ -160,6 +160,6 @@ def main(run_name, setting, instruction):
 if __name__ == "__main__":
     r = "my_testing"
     s = "individual"
-    i = "Find me at least two survery papers on Large Language Models. Check the detailed abstract of the most cited one. And then create a new note in Notes and add the titles the papers you found. Also include the abstract of the most cited paper."
+    i = "Find me at least two survery papers on Large Language Models. Check the detailed abstract of the most cited one. And then create a new note in Notes and add the titles the papers you found. Also include the abstract of the most cited paper. Use Google Chrome and Keep Notes for this task."
     main(run_name=r, setting=s, instruction=i)
 
