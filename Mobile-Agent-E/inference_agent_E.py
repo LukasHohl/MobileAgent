@@ -148,20 +148,23 @@ def process_image(image, query, caption_model=CAPTION_MODEL):
     
     return response
 
-from my_functions import process_image2, draw_boxes # I replaced the LLM, because I do not have the other API_KEY
-def generate_api(images, query, caption_model=CAPTION_MODEL):
+from my_functions import process_image2, draw_boxes, my_log # I replaced the LLM, because I do not have the other API_KEY
+def generate_api(images, query, caption_model=CAPTION_MODEL, taid = "no id"):
     icon_map = {}
     with concurrent.futures.ThreadPoolExecutor() as executor:
         futures = {executor.submit(process_image2, image, query, caption_model=caption_model): i for i, image in enumerate(images)}
-        
+        input_usage = 0
+        output_usage = 0
+        cached_usage = 0
         for future in concurrent.futures.as_completed(futures):
             i = futures[future]
             response = future.result()
-            icon_map[i + 1] = response
-    
+            icon_map[i + 1] = response[0]
+            input_usage += response[1]
+            output_usage += response[2]
+            cached_usage += response[3]
+        my_log(taid, input_usage, output_usage, cached_usage, "gpt-4o-mini")
     return icon_map
-
-
 def merge_text_blocks(
     text_list,
     coordinates_list,
@@ -291,7 +294,7 @@ class Perceptor:
             self.vlm_model, self.vlm_tokenizer = load_perception_models(**perception_args)
         self.adb_path = adb_path
 
-    def get_perception_infos(self, screenshot_file, temp_file=TEMP_DIR):
+    def get_perception_infos(self, screenshot_file, temp_file=TEMP_DIR, taid = "no id"):
         get_screenshot(self.adb_path)
         
         width, height = Image.open(screenshot_file).size
@@ -342,7 +345,7 @@ class Perceptor:
             else:
                 for i in range(len(images)):
                     images[i] = os.path.join(temp_file, images[i])
-                icon_map = generate_api(images, prompt, caption_model=CAPTION_MODEL)
+                icon_map = generate_api(images, prompt, caption_model=CAPTION_MODEL, taid = taid)
             for i, j in zip(image_id, range(1, len(image_id)+1)):
                 if icon_map.get(j):
                     perception_infos[i]['text'] = "icon: " + icon_map[j]
@@ -378,16 +381,16 @@ def finish(
 
 import copy
 import random
-def get_reasoning_model_api_response(chat, model_type=BACKBONE_TYPE, model=None, temperature=0.0):
+def get_reasoning_model_api_response(chat, model_type=BACKBONE_TYPE, model=None, temperature=0.0, tadi = "No id"):
     
     # chat messages in openai format
     model = REASONING_MODEL if model is None else model
     if model_type == "OpenAI":
-        return inference_chat(chat, model, OPENAI_API_URL, OPENAI_API_KEY, usage_tracking_jsonl=USAGE_TRACKING_JSONL, temperature=temperature)
+        return inference_chat(chat, model, OPENAI_API_URL, OPENAI_API_KEY, usage_tracking_jsonl=USAGE_TRACKING_JSONL, temperature=temperature, tadi = tadi)
     elif model_type == "Gemini":
-        return inference_chat(chat, model, GEMINI_API_URL, GEMINI_API_KEY, usage_tracking_jsonl=USAGE_TRACKING_JSONL, temperature=temperature)
+        return inference_chat(chat, model, GEMINI_API_URL, GEMINI_API_KEY, usage_tracking_jsonl=USAGE_TRACKING_JSONL, temperature=temperature, tadi = tadi)
     elif model_type == "Claude":
-        return inference_chat(chat, model, CLAUDE_API_URL, CLAUDE_API_KEY, usage_tracking_jsonl=USAGE_TRACKING_JSONL, temperature=temperature)
+        return inference_chat(chat, model, CLAUDE_API_URL, CLAUDE_API_KEY, usage_tracking_jsonl=USAGE_TRACKING_JSONL, temperature=temperature, tadi = tadi)
     else:
         raise ValueError(f"Unknown model type: {model_type}")
     
@@ -477,7 +480,7 @@ def run_single_task(
             experience_retriever_shortcut_prompt = experience_retriever_shortcut.get_prompt(instruction, initial_shortcuts)
             chat_experience_retrieval_shortcut = experience_retriever_shortcut.init_chat()
             chat_experience_retrieval_shortcut = add_response("user", experience_retriever_shortcut_prompt, chat_experience_retrieval_shortcut, image=None)
-            output_experience_retrieval_shortcut = get_reasoning_model_api_response(chat_experience_retrieval_shortcut, model=KNOWLEDGE_REFLECTION_MODEL, temperature=temperature)
+            output_experience_retrieval_shortcut = get_reasoning_model_api_response(chat_experience_retrieval_shortcut, model=KNOWLEDGE_REFLECTION_MODEL, temperature=temperature, tadi= task_id)
             parsed_experience_retrieval_shortcut = experience_retriever_shortcut.parse_response(output_experience_retrieval_shortcut)
             selected_shortcut_names = parsed_experience_retrieval_shortcut['selected_shortcut_names']
             if selected_shortcut_names is None or selected_shortcut_names == []:
@@ -497,7 +500,7 @@ def run_single_task(
         experience_retrieval_tips_prompt = experience_retriever_tips.get_prompt(instruction, tips)
         chat_experience_retrieval_tips = experience_retriever_tips.init_chat()
         chat_experience_retrieval_tips = add_response("user", experience_retrieval_tips_prompt, chat_experience_retrieval_tips, image=None)
-        output_experience_retrieval_tips = get_reasoning_model_api_response(chat_experience_retrieval_tips, model=KNOWLEDGE_REFLECTION_MODEL, temperature=temperature)
+        output_experience_retrieval_tips = get_reasoning_model_api_response(chat_experience_retrieval_tips, model=KNOWLEDGE_REFLECTION_MODEL, temperature=temperature, tadi= task_id)
         parsed_experience_retrieval_tips = experience_retriever_tips.parse_response(output_experience_retrieval_tips)
 
         tips = parsed_experience_retrieval_tips['selected_tips']
@@ -665,7 +668,7 @@ def run_single_task(
             screenshot_file = "./screenshot/screenshot.jpg"
             print("\n### Perceptor ... ###\n")
             perception_start_time = time.time()
-            perception_infos, width, height = perceptor.get_perception_infos(screenshot_file, temp_file=TEMP_DIR)
+            perception_infos, width, height = perceptor.get_perception_infos(screenshot_file, temp_file=TEMP_DIR, taid= task_id)
             shutil.rmtree(TEMP_DIR)
             os.mkdir(TEMP_DIR)
             
@@ -722,7 +725,7 @@ def run_single_task(
         prompt_planning = manager.get_prompt(info_pool)
         chat_planning = manager.init_chat()
         chat_planning = add_response("user", prompt_planning, chat_planning, image=screenshot_file)
-        output_planning = get_reasoning_model_api_response(chat_planning, temperature=temperature)
+        output_planning = get_reasoning_model_api_response(chat_planning, temperature=temperature, tadi= task_id)
         parsed_result_planning = manager.parse_response(output_planning)
         
         info_pool.plan = parsed_result_planning['plan']
@@ -760,7 +763,7 @@ def run_single_task(
                 prompt_knowledge_shortcuts = exp_reflector_shortcuts.get_prompt(info_pool)
                 chat_knowledge_shortcuts = exp_reflector_shortcuts.init_chat()
                 chat_knowledge_shortcuts = add_response("user", prompt_knowledge_shortcuts, chat_knowledge_shortcuts, image=None)
-                output_knowledge_shortcuts = get_reasoning_model_api_response(chat_knowledge_shortcuts, model=KNOWLEDGE_REFLECTION_MODEL, temperature=temperature)
+                output_knowledge_shortcuts = get_reasoning_model_api_response(chat_knowledge_shortcuts, model=KNOWLEDGE_REFLECTION_MODEL, temperature=temperature, tadi= task_id)
                 parsed_result_knowledge_shortcuts = exp_reflector_shortcuts.parse_response(output_knowledge_shortcuts)
                 new_shortcut_str = parsed_result_knowledge_shortcuts['new_shortcut']
                 if new_shortcut_str != "None" and new_shortcut_str is not None:
@@ -770,7 +773,7 @@ def run_single_task(
                 prompt_knowledge_tips = exp_reflector_tips.get_prompt(info_pool)
                 chat_knowledge_tips = exp_reflector_tips.init_chat()
                 chat_knowledge_tips = add_response("user", prompt_knowledge_tips, chat_knowledge_tips, image=None)
-                output_knowledge_tips = get_reasoning_model_api_response(chat_knowledge_tips, model=KNOWLEDGE_REFLECTION_MODEL, temperature=temperature)
+                output_knowledge_tips = get_reasoning_model_api_response(chat_knowledge_tips, model=KNOWLEDGE_REFLECTION_MODEL, temperature=temperature, tadi= task_id)
                 parsed_result_knowledge_tips = exp_reflector_tips.parse_response(output_knowledge_tips)
                 updated_tips = parsed_result_knowledge_tips['updated_tips']
                 info_pool.tips = updated_tips
@@ -826,7 +829,7 @@ def run_single_task(
         prompt_action = operator.get_prompt(info_pool)
         chat_action = operator.init_chat()
         chat_action = add_response("user", prompt_action, chat_action, image=screenshot_file)
-        output_action = get_reasoning_model_api_response(chat_action, temperature=temperature)
+        output_action = get_reasoning_model_api_response(chat_action, temperature=temperature, tadi= task_id)
         parsed_result_action = operator.parse_response(output_action)
         action_thought, action_object_str, action_description = parsed_result_action['thought'], parsed_result_action['action'], parsed_result_action['description']
         action_decision_end_time = time.time()
@@ -899,7 +902,7 @@ def run_single_task(
             os.remove(last_screenshot_file)
         os.rename(screenshot_file, last_screenshot_file)
         
-        perception_infos, width, height = perceptor.get_perception_infos(screenshot_file, temp_file=TEMP_DIR)
+        perception_infos, width, height = perceptor.get_perception_infos(screenshot_file, temp_file=TEMP_DIR, taid= task_id)
         shutil.rmtree(TEMP_DIR)
         os.mkdir(TEMP_DIR)
         
@@ -937,7 +940,7 @@ def run_single_task(
         prompt_action_reflect = action_reflector.get_prompt(info_pool)
         chat_action_reflect = action_reflector.init_chat()
         chat_action_reflect = add_response_two_image("user", prompt_action_reflect, chat_action_reflect, [last_screenshot_file, screenshot_file])
-        output_action_reflect = get_reasoning_model_api_response(chat_action_reflect, temperature=temperature)
+        output_action_reflect = get_reasoning_model_api_response(chat_action_reflect, temperature=temperature, tadi= task_id)
         parsed_result_action_reflect = action_reflector.parse_response(output_action_reflect)
         outcome, error_description, progress_status = (
             parsed_result_action_reflect['outcome'], 
@@ -1009,7 +1012,7 @@ def run_single_task(
             prompt_note = notetaker.get_prompt(info_pool)
             chat_note = notetaker.init_chat()
             chat_note = add_response("user", prompt_note, chat_note, image=screenshot_file) # new screenshot
-            output_note = get_reasoning_model_api_response(chat_note, temperature=temperature)
+            output_note = get_reasoning_model_api_response(chat_note, temperature=temperature, tadi= task_id)
             parsed_result_note = notetaker.parse_response(output_note)
             important_notes = parsed_result_note['important_notes']
             info_pool.important_notes = important_notes

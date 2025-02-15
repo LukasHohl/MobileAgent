@@ -2,7 +2,7 @@ import base64
 import requests
 from time import sleep
 import json
-
+from my_functions import my_log
 def encode_image(image_path):
     with open(image_path, "rb") as image_file:
         return base64.b64encode(image_file.read()).decode('utf-8')
@@ -45,7 +45,7 @@ def track_usage(res_json, api_key):
         "completion_token_price": completion_token_price
     }
 
-def inference_chat(chat, model, api_url, token, usage_tracking_jsonl = None, max_tokens = 2048, temperature = 0.0):
+def inference_chat(chat, model, api_url, token, usage_tracking_jsonl = None, max_tokens = 2048, temperature = 0.0, tadi = "No id"):
     if token is None:
         raise ValueError("API key is required")
     
@@ -113,6 +113,7 @@ def inference_chat(chat, model, api_url, token, usage_tracking_jsonl = None, max
                 usage = track_usage(res_json, api_key=token)
                 with open(usage_tracking_jsonl, "a") as f:
                     f.write(json.dumps(usage) + "\n")
+                my_log(tadi, usage["prompt_tokens"], usage["completion_tokens"], 0, usage["model"])
         except:
             print("Network Error:")
             try:
