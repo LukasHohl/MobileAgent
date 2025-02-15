@@ -1,0 +1,641 @@
+[
+    {
+        "step": 0,
+        "operation": "init",
+        "instruction": "Find me at least two survery papers on Large Language Models. Check the detailed abstract of the most cited one. And then create a new note in Notes and add the titles the papers you found. Also include the abstract of the most cited paper. Use Google Chrome and Keep Notes for this task.",
+        "task_id": "20250215-120638",
+        "run_name": "my_testing",
+        "max_itr": 40,
+        "max_consecutive_failures": 5,
+        "max_repetitive_actions": 5,
+        "future_tasks": [],
+        "log_root": "logs/gpt-4o-2024-11-20/mobile_agent_E",
+        "tips_path": null,
+        "shortcuts_path": null,
+        "persistent_tips_path": null,
+        "persistent_shortcuts_path": null,
+        "perception_args": {
+            "device": "cuda",
+            "caption_call_method": "api",
+            "caption_model": "qwen-vl-plus",
+            "groundingdino_model": "AI-ModelScope/GroundingDINO",
+            "groundingdino_revision": "v1.0.0",
+            "ocr_detection_model": "iic/cv_resnet18_ocr-detection-db-line-level_damo",
+            "ocr_recognition_model": "iic/cv_convnextTiny_ocr-recognition-document_damo"
+        },
+        "init_info_pool": {
+            "instruction": "Find me at least two survery papers on Large Language Models. Check the detailed abstract of the most cited one. And then create a new note in Notes and add the titles the papers you found. Also include the abstract of the most cited paper. Use Google Chrome and Keep Notes for this task.",
+            "tips": "0. Do not add any payment information. If you are asked to sign in, ignore it or sign in as a guest if possible. Close any pop-up windows when opening an app.\n1. By default, no APPs are opened in the background.\n2. Screenshots may show partial text in text boxes from your previous input; this does not count as an error.\n3. When creating new Notes, you do not need to enter a title unless the user specifically requests it.\n",
+            "shortcuts": {
+                "Tap_Type_and_Enter": {
+                    "name": "Tap_Type_and_Enter",
+                    "arguments": [
+                        "x",
+                        "y",
+                        "text"
+                    ],
+                    "description": "Tap an input box at position (x, y), Type the \"text\", and then perform the Enter operation. Very useful for searching and sending messages!",
+                    "precondition": "There is a text input box on the screen with no previously entered content.",
+                    "atomic_action_sequence": [
+                        {
+                            "name": "Tap",
+                            "arguments_map": {
+                                "x": "x",
+                                "y": "y"
+                            }
+                        },
+                        {
+                            "name": "Type",
+                            "arguments_map": {
+                                "text": "text"
+                            }
+                        },
+                        {
+                            "name": "Enter",
+                            "arguments_map": {}
+                        }
+                    ]
+                }
+            },
+            "width": 1080,
+            "height": 2340,
+            "perception_infos_pre": [],
+            "keyboard_pre": false,
+            "perception_infos_post": [],
+            "keyboard_post": false,
+            "summary_history": [],
+            "action_history": [],
+            "action_outcomes": [],
+            "error_descriptions": [],
+            "last_summary": "",
+            "last_action": "",
+            "last_action_thought": "",
+            "important_notes": "",
+            "error_flag_plan": false,
+            "error_description_plan": false,
+            "plan": "",
+            "progress_status": "",
+            "progress_status_history": [],
+            "finish_thought": "",
+            "current_subgoal": "",
+            "prev_subgoal": "",
+            "err_to_manager_thresh": 2,
+            "future_tasks": []
+        }
+    },
+    {
+        "step": 1,
+        "operation": "perception",
+        "screenshot": "logs/gpt-4o-2024-11-20/mobile_agent_E/my_testing/20250215-120638/screenshots/1.jpg",
+        "perception_infos": [
+            {
+                "text": "text: 11:06 ",
+                "coordinates": [
+                    112,
+                    30
+                ]
+            },
+            {
+                "text": "text: Sat, Feb 15",
+                "coordinates": [
+                    211,
+                    228
+                ]
+            },
+            {
+                "text": "text: Chrome",
+                "coordinates": [
+                    416,
+                    1314
+                ]
+            },
+            {
+                "text": "text: Keep Notes",
+                "coordinates": [
+                    169,
+                    1317
+                ]
+            },
+            {
+                "text": "text: Play Store",
+                "coordinates": [
+                    166,
+                    1643
+                ]
+            },
+            {
+                "text": "text: Gmail",
+                "coordinates": [
+                    415,
+                    1643
+                ]
+            },
+            {
+                "text": "text: Photos",
+                "coordinates": [
+                    662,
+                    1644
+                ]
+            },
+            {
+                "text": "text: YouTube",
+                "coordinates": [
+                    910,
+                    1643
+                ]
+            },
+            {
+                "text": "icon: The icon is circular, featuring a blue center surrounded by red, yellow, and green segments.",
+                "coordinates": [
+                    415,
+                    1186
+                ]
+            },
+            {
+                "text": "icon: The icon features a circular design divided into four curved sections, colored in red, yellow, green, and blue.",
+                "coordinates": [
+                    662,
+                    1514
+                ]
+            },
+            {
+                "text": "icon: The icon features a location pin shape in green, with a circular white background and a center marked by blue, red, yellow, and green colors.",
+                "coordinates": [
+                    909,
+                    1968
+                ]
+            },
+            {
+                "text": "icon: The icon features a yellow, rectangular shape with a curved bottom and a folded corner, centered within a white circle against a dark background.",
+                "coordinates": [
+                    168,
+                    1186
+                ]
+            },
+            {
+                "text": "icon: The icon features a triangular play button in blue, green, red, and yellow, surrounded by a white circle with a gold border.",
+                "coordinates": [
+                    662,
+                    1968
+                ]
+            },
+            {
+                "text": "icon: The icon is circular with a white background and features a stylized red \"M,\" with a green and blue accent.",
+                "coordinates": [
+                    415,
+                    1514
+                ]
+            },
+            {
+                "text": "icon: The icon features a speech bubble shape in varying shades of blue, set against a circular white background.",
+                "coordinates": [
+                    415,
+                    1968
+                ]
+            },
+            {
+                "text": "icon: The icon features a triangular play button composed of green, blue, yellow, and red sections, set against a white circular background.",
+                "coordinates": [
+                    168,
+                    1515
+                ]
+            },
+            {
+                "text": "icon: The icon features a blue phone silhouette on a white circular background.",
+                "coordinates": [
+                    168,
+                    1969
+                ]
+            },
+            {
+                "text": "icon: The icon features a red play button inside a white rectangle, set against a circular background.",
+                "coordinates": [
+                    909,
+                    1514
+                ]
+            },
+            {
+                "text": "icon: The icon features a stylized letter \"G\" in a round shape, composed of blue, red, yellow, and green colors.",
+                "coordinates": [
+                    162,
+                    2205
+                ]
+            },
+            {
+                "text": "icon: The icon features a camera shape with a blue outline, a yellow top corner, a red section on the bottom, and green and blue circles.",
+                "coordinates": [
+                    915,
+                    2206
+                ]
+            },
+            {
+                "text": "icon: The icon features a blue microphone shape with a colorful semicircular design underneath it, consisting of red, yellow, and green segments.",
+                "coordinates": [
+                    789,
+                    2207
+                ]
+            },
+            {
+                "text": "icon: The icon features a teardrop shape, predominantly green with blue, red, and yellow segments forming a subtle circular pattern at the top.",
+                "coordinates": [
+                    909,
+                    1966
+                ]
+            },
+            {
+                "text": "icon: The icon is shaped like a traditional telephone handset and is colored in a solid blue.",
+                "coordinates": [
+                    165,
+                    1968
+                ]
+            },
+            {
+                "text": "icon: The icon is a triangular shape divided into four sections, colored blue, green, yellow, and red.",
+                "coordinates": [
+                    172,
+                    1514
+                ]
+            },
+            {
+                "text": "icon: The icon features a stylized envelope shape with a red triangular flap, accompanied by blue, yellow, and green accents.",
+                "coordinates": [
+                    416,
+                    1509
+                ]
+            },
+            {
+                "text": "icon: The icon is a triangular shape with a bright green, blue, yellow, and red color scheme.",
+                "coordinates": [
+                    663,
+                    1968
+                ]
+            },
+            {
+                "text": "icon: The icon features a yellow background with a rounded white shape at the center, resembling a light bulb or a circular object, accompanied by a smaller horizontal bar at the bottom.",
+                "coordinates": [
+                    167,
+                    1184
+                ]
+            },
+            {
+                "text": "icon: The icon has a rectangular shape with rounded edges and is primarily white in color, featuring three small vertical lines at the top.",
+                "coordinates": [
+                    222,
+                    31
+                ]
+            },
+            {
+                "text": "icon: The icon is shaped like a speech bubble with a rounded top and pointed tail, and it is primarily blue with a lighter blue shadow effect.",
+                "coordinates": [
+                    416,
+                    1975
+                ]
+            }
+        ],
+        "duration": 13.535782098770142
+    },
+    {
+        "step": 1,
+        "operation": "planning",
+        "prompt_planning": "### User Instruction ###\nFind me at least two survery papers on Large Language Models. Check the detailed abstract of the most cited one. And then create a new note in Notes and add the titles the papers you found. Also include the abstract of the most cited paper. Use Google Chrome and Keep Notes for this task.\n\n---\nThink step by step and make an high-level plan to achieve the user's instruction. If the request is complex, break it down into subgoals. If the request involves exploration, include concrete subgoals to quantify the investigation steps. The screenshot displays the starting state of the phone.\n\n### Available Shortcuts from Past Experience ###\nWe additionally provide some shortcut functionalities based on past experience. These shortcuts are predefined sequences of operations that might make the plan more efficient. Each shortcut includes a precondition specifying when it is suitable for use. If your plan implies the use of certain shortcuts, ensure that the precondition is fulfilled before using them. Note that you don't necessarily need to include the names of these shortcuts in your high-level plan; they are provided as a reference.\n- Tap_Type_and_Enter: Tap an input box at position (x, y), Type the \"text\", and then perform the Enter operation. Very useful for searching and sending messages! | Precondition: There is a text input box on the screen with no previously entered content.\n\n---\nProvide your output in the following format which contains three parts:\n\n### Thought ###\nA detailed explanation of your rationale for the plan and subgoals.\n\n### Plan ###\n1. first subgoal\n2. second subgoal\n...\n\n### Current Subgoal ###\nThe first subgoal you should work on.\n\n",
+        "error_flag_plan": false,
+        "raw_response": "### Thought ###\nTo fulfill the user's request, I need to find at least two survey papers on Large Language Models (LLMs), identify the most cited one, and extract its detailed abstract. Then, I will create a new note in Google Keep Notes and include the titles of the papers along with the abstract of the most cited one. Here's the step-by-step plan:\n\n1. Open Google Chrome and search for survey papers on Large Language Models.\n2. Identify at least two survey papers and determine the most cited one.\n3. Read and extract the detailed abstract of the most cited paper.\n4. Open Google Keep Notes and create a new note.\n5. Add the titles of the papers and the abstract of the most cited paper to the note.\n\n### Plan ###\n1. Open Google Chrome and search for \"survey papers on Large Language Models.\"\n2. Identify at least two survey papers and determine the most cited one by checking citation counts or popularity.\n3. Open the abstract of the most cited paper and extract its detailed content.\n4. Open Google Keep Notes and create a new note.\n5. Add the titles of the papers and the abstract of the most cited paper to the note.\n\n### Current Subgoal ###\nOpen Google Chrome and search for \"survey papers on Large Language Models.\"",
+        "thought": "To fulfill the user's request, I need to find at least two survey papers on Large Language Models (LLMs), identify the most cited one, and extract its detailed abstract. Then, I will create a new note in Google Keep Notes and include the titles of the papers along with the abstract of the most cited one. Here's the step-by-step plan: 1. Open Google Chrome and search for survey papers on Large Language Models. 2. Identify at least two survey papers and determine the most cited one. 3. Read and extract the detailed abstract of the most cited paper. 4. Open Google Keep Notes and create a new note. 5. Add the titles of the papers and the abstract of the most cited paper to the note.",
+        "plan": "1. Open Google Chrome and search for \"survey papers on Large Language Models.\" 2. Identify at least two survey papers and determine the most cited one by checking citation counts or popularity. 3. Open the abstract of the most cited paper and extract its detailed content. 4. Open Google Keep Notes and create a new note. 5. Add the titles of the papers and the abstract of the most cited paper to the note.",
+        "current_subgoal": "Open Google Chrome and search for \"survey papers on Large Language Models.\"",
+        "duration": 6.032663345336914
+    },
+    {
+        "step": 1,
+        "operation": "action",
+        "prompt_action": "### User Instruction ###\nFind me at least two survery papers on Large Language Models. Check the detailed abstract of the most cited one. And then create a new note in Notes and add the titles the papers you found. Also include the abstract of the most cited paper. Use Google Chrome and Keep Notes for this task.\n\n### Overall Plan ###\n1. Open Google Chrome and search for \"survey papers on Large Language Models.\" 2. Identify at least two survey papers and determine the most cited one by checking citation counts or popularity. 3. Open the abstract of the most cited paper and extract its detailed content. 4. Open Google Keep Notes and create a new note. 5. Add the titles of the papers and the abstract of the most cited paper to the note.\n\n### Progress Status ###\nNo progress yet.\n\n### Current Subgoal ###\nOpen Google Chrome and search for \"survey papers on Large Language Models.\"\n\n### Screen Information ###\nThe attached image is a screenshot showing the current state of the phone. Its width and height are 1080 and 2400 pixels, respectively.\nTo help you better understand the content in this screenshot, we have extracted positional information for the text elements and icons, including interactive elements such as search bars. The format is: (coordinates; content). The coordinates are [x, y], where x represents the horizontal pixel position (from left to right) and y represents the vertical pixel position (from top to bottom).The extracted information is as follows:\n[112, 30]; text: 11:06 \n[211, 228]; text: Sat, Feb 15\n[416, 1314]; text: Chrome\n[169, 1317]; text: Keep Notes\n[166, 1643]; text: Play Store\n[415, 1643]; text: Gmail\n[662, 1644]; text: Photos\n[910, 1643]; text: YouTube\n[415, 1186]; icon: The icon is circular, featuring a blue center surrounded by red, yellow, and green segments.\n[662, 1514]; icon: The icon features a circular design divided into four curved sections, colored in red, yellow, green, and blue.\n[909, 1968]; icon: The icon features a location pin shape in green, with a circular white background and a center marked by blue, red, yellow, and green colors.\n[168, 1186]; icon: The icon features a yellow, rectangular shape with a curved bottom and a folded corner, centered within a white circle against a dark background.\n[662, 1968]; icon: The icon features a triangular play button in blue, green, red, and yellow, surrounded by a white circle with a gold border.\n[415, 1514]; icon: The icon is circular with a white background and features a stylized red \"M,\" with a green and blue accent.\n[415, 1968]; icon: The icon features a speech bubble shape in varying shades of blue, set against a circular white background.\n[168, 1515]; icon: The icon features a triangular play button composed of green, blue, yellow, and red sections, set against a white circular background.\n[168, 1969]; icon: The icon features a blue phone silhouette on a white circular background.\n[909, 1514]; icon: The icon features a red play button inside a white rectangle, set against a circular background.\n[162, 2205]; icon: The icon features a stylized letter \"G\" in a round shape, composed of blue, red, yellow, and green colors.\n[915, 2206]; icon: The icon features a camera shape with a blue outline, a yellow top corner, a red section on the bottom, and green and blue circles.\n[789, 2207]; icon: The icon features a blue microphone shape with a colorful semicircular design underneath it, consisting of red, yellow, and green segments.\n[909, 1966]; icon: The icon features a teardrop shape, predominantly green with blue, red, and yellow segments forming a subtle circular pattern at the top.\n[165, 1968]; icon: The icon is shaped like a traditional telephone handset and is colored in a solid blue.\n[172, 1514]; icon: The icon is a triangular shape divided into four sections, colored blue, green, yellow, and red.\n[416, 1509]; icon: The icon features a stylized envelope shape with a red triangular flap, accompanied by blue, yellow, and green accents.\n[663, 1968]; icon: The icon is a triangular shape with a bright green, blue, yellow, and red color scheme.\n[167, 1184]; icon: The icon features a yellow background with a rounded white shape at the center, resembling a light bulb or a circular object, accompanied by a smaller horizontal bar at the bottom.\n[222, 31]; icon: The icon has a rectangular shape with rounded edges and is primarily white in color, featuring three small vertical lines at the top.\n[416, 1975]; icon: The icon is shaped like a speech bubble with a rounded top and pointed tail, and it is primarily blue with a lighter blue shadow effect.\n\nNote that a search bar is often a long, rounded rectangle. If no search bar is presented and you want to perform a search, you may need to tap a search button, which is commonly represented by a magnifying glass.\nAlso, the information above might not be entirely accurate. You should combine it with the screenshot to gain a better understanding.\n\n### Keyboard status ###\nThe keyboard has not been activated and you can't type.\n\n### Tips ###\nFrom previous experience interacting with the device, you have collected the following tips that might be useful for deciding what to do next:\n0. Do not add any payment information. If you are asked to sign in, ignore it or sign in as a guest if possible. Close any pop-up windows when opening an app.\n1. By default, no APPs are opened in the background.\n2. Screenshots may show partial text in text boxes from your previous input; this does not count as an error.\n3. When creating new Notes, you do not need to enter a title unless the user specifically requests it.\n\n\n### Important Notes ###\nNo important notes recorded.\n\n---\nCarefully examine all the information provided above and decide on the next action to perform. If you notice an unsolved error in the previous action, think as a human user and attempt to rectify them. You must choose your action from one of the atomic actions or the shortcuts. The shortcuts are predefined sequences of actions that can be used to speed up the process. Each shortcut has a precondition specifying when it is suitable to use. If you plan to use a shortcut, ensure the current phone state satisfies its precondition first.\n\n#### Atomic Actions ####\nThe atomic action functions are listed in the format of `name(arguments): description` as follows:\n- Open_App(app_name): If the current screen is Home or App screen, you can use this action to open the app named \"app_name\" on the visible on the current screen.\n- Tap(x, y): Tap the position (x, y) in current screen.\n- Swipe(x1, y1, x2, y2): Swipe from position (x1, y1) to position (x2, y2). To swipe up or down to review more content, you can adjust the y-coordinate offset based on the desired scroll distance. For example, setting x1 = x2 = 540, y1 = 1200, and y2 = 240 will swipe upwards to review additional content below. To swipe left or right in the App switcher screen to choose between open apps, set the x-coordinate offset to at least 540.\n- Enter(): Press the Enter key after typing (useful for searching).\n- Switch_App(): Show the App switcher for switching between opened apps.\n- Back(): Return to the previous state.\n- Home(): Return to home page.\n- Wait(): Wait for 10 seconds to give more time for a page loading.\nNOTE: Unable to type. The keyboard has not been activated. To type, please activate the keyboard by tapping on an input box or using a shortcut, which includes tapping on an input box first.\u201d\n\n#### Shortcuts ####\nThe shortcut functions are listed in the format of `name(arguments): description | Precondition: precondition` as follows:\n- Tap_Type_and_Enter(x, y, text): Tap an input box at position (x, y), Type the \"text\", and then perform the Enter operation. Very useful for searching and sending messages! | Precondition: There is a text input box on the screen with no previously entered content.\n\n### Latest Action History ###\nNo actions have been taken yet.\n\n---\nProvide your output in the following format, which contains three parts:\n### Thought ###\nProvide a detailed explanation of your rationale for the chosen action. IMPORTANT: If you decide to use a shortcut, first verify that its precondition is met in the current phone state. For example, if the shortcut requires the phone to be at the Home screen, check whether the current screenshot shows the Home screen. If not, perform the appropriate atomic actions instead.\n\n### Action ###\nChoose only one action or shortcut from the options provided. IMPORTANT: Do NOT return invalid actions like null or stop. Do NOT repeat previously failed actions.\nUse shortcuts whenever possible to expedite the process, but make sure that the precondition is met.\nYou must provide your decision using a valid JSON format specifying the name and arguments of the action. For example, if you choose to tap at position (100, 200), you should write {\"name\":\"Tap\", \"arguments\":{\"x\":100, \"y\":100}}. If an action does not require arguments, such as Home, fill in null to the \"arguments\" field. Ensure that the argument keys match the action function's signature exactly.\n\n### Description ###\nA brief description of the chosen action and the expected outcome.",
+        "raw_response": "### Thought ###\nThe task requires opening Google Chrome to search for survey papers on Large Language Models. The Chrome app is visible on the home screen, and I can directly open it. This is the first step in the process.\n\n### Action ###\n```json\n{\n  \"name\": \"Open_App\",\n  \"arguments\": {\n    \"app_name\": \"Chrome\"\n  }\n}\n```\n\n### Description ###\nThis action will open the Google Chrome app, allowing me to proceed with the search for survey papers on Large Language Models.",
+        "action_object": {
+            "name": "Open_App",
+            "arguments": {
+                "app_name": "Chrome"
+            }
+        },
+        "action_object_str": "```json {  \"name\": \"Open_App\",  \"arguments\": {   \"app_name\": \"Chrome\"  } } ```",
+        "action_thought": "The task requires opening Google Chrome to search for survey papers on Large Language Models. The Chrome app is visible on the home screen, and I can directly open it. This is the first step in the process.",
+        "action_description": "This action will open the Google Chrome app, allowing me to proceed with the search for survey papers on Large Language Models.",
+        "duration": 4.048173189163208,
+        "execution_duration": 13.585337400436401
+    },
+    {
+        "step": 2,
+        "operation": "perception",
+        "screenshot": "logs/gpt-4o-2024-11-20/mobile_agent_E/my_testing/20250215-120638/screenshots/2.jpg",
+        "perception_infos": [
+            {
+                "text": "text: 11:07 Q",
+                "coordinates": [
+                    112,
+                    29
+                ]
+            },
+            {
+                "text": "text: \u5341",
+                "coordinates": [
+                    760,
+                    136
+                ]
+            },
+            {
+                "text": "text: 2",
+                "coordinates": [
+                    891,
+                    135
+                ]
+            },
+            {
+                "text": "text: i",
+                "coordinates": [
+                    1016,
+                    135
+                ]
+            },
+            {
+                "text": "text: myaccount.gooqle.com/",
+                "coordinates": [
+                    435,
+                    138
+                ]
+            },
+            {
+                "text": "text: Google",
+                "coordinates": [
+                    538,
+                    301
+                ]
+            },
+            {
+                "text": "text: Methode zur Bestatigung Ihres",
+                "coordinates": [
+                    541,
+                    420
+                ]
+            },
+            {
+                "text": "text: Alters auswahlen",
+                "coordinates": [
+                    540,
+                    503
+                ]
+            },
+            {
+                "text": "text: Das dauert in der Regel nur ein paar Minuten",
+                "coordinates": [
+                    540,
+                    597
+                ]
+            },
+            {
+                "text": "text: hohl22076@gmail.com",
+                "coordinates": [
+                    574,
+                    675
+                ]
+            },
+            {
+                "text": "text: H",
+                "coordinates": [
+                    331,
+                    674
+                ]
+            },
+            {
+                "text": "text: Einen amtlichen Ausweis verwenden",
+                "coordinates": [
+                    473,
+                    811
+                ]
+            },
+            {
+                "text": "text: \u56fd",
+                "coordinates": [
+                    91,
+                    839
+                ]
+            },
+            {
+                "text": "text: Teilen Sie ein Bild Ihres amtlichen Ausweises, etwa Ihres",
+                "coordinates": [
+                    581,
+                    856
+                ]
+            },
+            {
+                "text": "text: Fuhrerscheins oder Reisepasses.",
+                "coordinates": [
+                    408,
+                    900
+                ]
+            },
+            {
+                "text": "text: Selfie machen",
+                "coordinates": [
+                    287,
+                    991
+                ]
+            },
+            {
+                "text": "text: Google arbeitet mit einem Unternehmen zusammen, das",
+                "coordinates": [
+                    579,
+                    1039
+                ]
+            },
+            {
+                "text": "text: auf die Altersschatzung spezialisiert ist.",
+                "coordinates": [
+                    460,
+                    1081
+                ]
+            },
+            {
+                "text": "text: Kreditkarte verwenden",
+                "coordinates": [
+                    355,
+                    1172
+                ]
+            },
+            {
+                "text": "text: Ihnen werden keine Kosten in Rechnung gestellt. Etwaige\nTransaktionsgebuhren werden vollstndig erstattet.",
+                "coordinates": [
+                    586,
+                    1240
+                ]
+            },
+            {
+                "text": "text: hilfe",
+                "coordinates": [
+                    398,
+                    2251
+                ]
+            },
+            {
+                "text": "text: Feedback geben",
+                "coordinates": [
+                    183,
+                    2252
+                ]
+            },
+            {
+                "text": "text: Datenschutz",
+                "coordinates": [
+                    590,
+                    2252
+                ]
+            },
+            {
+                "text": "text: Nutzungsbedingungen",
+                "coordinates": [
+                    910,
+                    2254
+                ]
+            },
+            {
+                "text": "icon: The icon features a circular shape with a blue background and simple, stylized facial features including a head with hair and two dots representing eyes.",
+                "coordinates": [
+                    93,
+                    1019
+                ]
+            },
+            {
+                "text": "icon: The icon features a rectangular shape with rounded corners and is predominantly blue, depicting a person silhouette and identification details.",
+                "coordinates": [
+                    94,
+                    838
+                ]
+            },
+            {
+                "text": "icon: The icon is a square with rounded corners, featuring a black outline and a white background, with the number \"2\" displayed prominently in black.",
+                "coordinates": [
+                    890,
+                    135
+                ]
+            },
+            {
+                "text": "icon: The icon is a circular shape with a pink background and a white letter \"H\" in the center.",
+                "coordinates": [
+                    330,
+                    675
+                ]
+            },
+            {
+                "text": "icon: The icon is shaped like a house with a triangular roof and is predominantly black.",
+                "coordinates": [
+                    62,
+                    135
+                ]
+            },
+            {
+                "text": "icon: The icon is rectangular with a blue color, featuring two horizontal white stripes across it.",
+                "coordinates": [
+                    94,
+                    1199
+                ]
+            },
+            {
+                "text": "icon: The icon features a simple rectangular shape with the word \"Google\" displayed in blue, red, yellow, and green colors.",
+                "coordinates": [
+                    538,
+                    303
+                ]
+            },
+            {
+                "text": "icon: The icon is a black plus sign shaped with two intersecting lines, one vertical and one horizontal.",
+                "coordinates": [
+                    760,
+                    135
+                ]
+            },
+            {
+                "text": "icon: The icon has a rounded rectangular shape with a light gray background and dark text.",
+                "coordinates": [
+                    409,
+                    135
+                ]
+            },
+            {
+                "text": "icon: The icon features a stylized letter \"G\" in a blue color against a light background.",
+                "coordinates": [
+                    466,
+                    296
+                ]
+            },
+            {
+                "text": "icon: The icon is shaped like a small memory card with a tapered edge and three notches at the top, and it is colored gray.",
+                "coordinates": [
+                    222,
+                    31
+                ]
+            },
+            {
+                "text": "icon: The icon features three stacked black circles on a white background.",
+                "coordinates": [
+                    1017,
+                    134
+                ]
+            },
+            {
+                "text": "icon: The icon consists of three shapes: a gray semicircle, a gray triangle, and a gray battery symbol, all displayed in a monochromatic color scheme.",
+                "coordinates": [
+                    949,
+                    29
+                ]
+            },
+            {
+                "text": "icon: The icon is shaped like a quarter circle and is colored in dark gray.",
+                "coordinates": [
+                    910,
+                    28
+                ]
+            },
+            {
+                "text": "icon: The icon features a lowercase \"e\" in a bold, rounded shape, colored in bright red with a green vertical line beside it.",
+                "coordinates": [
+                    614,
+                    305
+                ]
+            },
+            {
+                "text": "icon: The icon features two circular shapes, one with a smaller circle above a horizontal line and the other with a larger circle below a horizontal line, all in a solid black color against a light background.",
+                "coordinates": [
+                    167,
+                    135
+                ]
+            },
+            {
+                "text": "icon: The icon is triangular in shape, with a light gray upper section and a dark gray lower section.",
+                "coordinates": [
+                    950,
+                    31
+                ]
+            },
+            {
+                "text": "icon: The icon features a shield shape with a stylized letter \"S\" in the center, rendered in a dark gray color.",
+                "coordinates": [
+                    165,
+                    31
+                ]
+            },
+            {
+                "text": "icon: The icon is a simple rectangular shape with a rounded top, and it is gray in color.",
+                "coordinates": [
+                    994,
+                    30
+                ]
+            },
+            {
+                "text": "icon: The icon is a lowercase \"g\" in a solid blue color against a white background.",
+                "coordinates": [
+                    574,
+                    311
+                ]
+            }
+        ],
+        "duration": 10.872759819030762
+    }
+]

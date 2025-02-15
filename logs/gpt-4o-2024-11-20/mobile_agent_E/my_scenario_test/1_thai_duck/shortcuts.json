@@ -1,0 +1,65 @@
+{
+    "Tap_Type_and_Enter": {
+        "name": "Tap_Type_and_Enter",
+        "arguments": [
+            "x",
+            "y",
+            "text"
+        ],
+        "description": "Tap an input box at position (x, y), Type the \"text\", and then perform the Enter operation. Very useful for searching and sending messages!",
+        "precondition": "There is a text input box on the screen with no previously entered content.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "x",
+                    "y": "y"
+                }
+            },
+            {
+                "name": "Type",
+                "arguments_map": {
+                    "text": "text"
+                }
+            },
+            {
+                "name": "Enter",
+                "arguments_map": {}
+            }
+        ]
+    },
+    "Create_New_Text_Note": {
+        "name": "Create_New_Text_Note",
+        "arguments": [
+            "tap_plus_x",
+            "tap_plus_y",
+            "tap_text_x",
+            "tap_text_y",
+            "note_text"
+        ],
+        "description": "Create a new text note in Google Keep Notes by tapping the '+' icon, selecting the 'Text' option, and typing the provided text.",
+        "precondition": "The Google Keep Notes app is open, and the '+' icon is visible on the screen.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "tap_plus_x",
+                    "y": "tap_plus_y"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "tap_text_x",
+                    "y": "tap_text_y"
+                }
+            },
+            {
+                "name": "Type",
+                "arguments_map": {
+                    "text": "note_text"
+                }
+            }
+        ]
+    }
+}
