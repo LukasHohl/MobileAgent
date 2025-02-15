@@ -148,7 +148,7 @@ def process_image(image, query, caption_model=CAPTION_MODEL):
     
     return response
 
-from my_functions import process_image2 # I replaced the LLM, because I do not have the other API_KEY
+from my_functions import process_image2, draw_boxes # I replaced the LLM, because I do not have the other API_KEY
 def generate_api(images, query, caption_model=CAPTION_MODEL):
     icon_map = {}
     with concurrent.futures.ThreadPoolExecutor() as executor:
@@ -298,7 +298,7 @@ class Perceptor:
         
         text, coordinates = ocr(screenshot_file, self.ocr_detection, self.ocr_recognition)
         text, coordinates = merge_text_blocks(text, coordinates)
-        
+        draw_boxes(screenshot_file, coordinates)
         center_list = [[(coordinate[0]+coordinate[2])/2, (coordinate[1]+coordinate[3])/2] for coordinate in coordinates]
         draw_coordinates_on_image(screenshot_file, center_list)
         
@@ -308,7 +308,7 @@ class Perceptor:
             perception_infos.append(perception_info)
             
         coordinates = det(screenshot_file, "icon", self.groundingdino_model)
-        
+
         for i in range(len(coordinates)):
             perception_info = {"text": "icon", "coordinates": coordinates[i]}
             perception_infos.append(perception_info)

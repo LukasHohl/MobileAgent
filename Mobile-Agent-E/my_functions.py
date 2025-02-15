@@ -1,6 +1,7 @@
 import base64
 from openai import OpenAI
 from os import environ
+from PIL import ImageDraw, Image
 #code is mostly from the openai documentation
 #oh and it is obviously based on the code from process_image
 #https://platform.openai.com/docs/guides/vision
@@ -32,3 +33,9 @@ def process_image2(image, query, caption_model=None):
         response = "This is an icon."
     
     return response
+def draw_boxes(img,bounding_box_list,color = (255,255,0), width = 5):
+    img = Image.open(img) #this makes more sense than inplace
+    imgdrw = ImageDraw.Draw(img)
+    for n in range(0,len(bounding_box_list)):
+        imgdrw.rectangle((bounding_box_list[n]), outline= color, width= width)
+    img.save("border.jpg")
