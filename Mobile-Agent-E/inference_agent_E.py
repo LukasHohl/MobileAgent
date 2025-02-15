@@ -83,7 +83,7 @@ INIT_TIPS = """0. Do not add any payment information. If you are asked to sign i
 ## other
 TEMP_DIR = "temp"
 SCREENSHOT_DIR = "screenshot"
-SLEEP_BETWEEN_STEPS = 5
+SLEEP_BETWEEN_STEPS = 0 # why do we sleep between steps, we already sleep after executing the action?
 
 ###################################################################################################
 ### Perception related functions ###

@@ -1,0 +1,243 @@
+{
+    "length": 7,
+    "scenario": "RESTAURANT_RECOMMENDATION",
+    "scenario_id": 1,
+    "tasks": [
+        {
+            "task_id": "1_late_night_korean_food",
+            "instruction": "Find the best-rated late-night Korean restaurant in Champaign, IL that opens beyond 9pm on Google Maps.",
+            "type": "single_app",
+            "apps": [
+                "Maps"
+            ],
+            "rubrics": [
+                "Opened Maps",
+                "Searched for Korean restaurants in Champaign, IL",
+                "Checked at least one restaurant's rating",
+                "Checked at least one restaurant's opening hours",
+                "Checked multiple restaurants' ratings and opening hours",
+                "Stopped at the screen showing a highly-rated korean restaurant in Champaign, IL that opens beyond 9pm"
+            ],
+            "human_reference_operations": [
+                "open maps",
+                "tap on search bar",
+                "type 'late-night Korean restaurants in Champaign, IL'",
+                "tap enter",
+                "tap filters",
+                "tap 'Custom' under Hours",
+                "tap 'Any time'",
+                "swipe up to see more time",
+                "swipe up again",
+                "swipe up again",
+                "tap 10 pm",
+                "tap 'Apply'",
+                "swipe up to check more ratings",
+                "swipe up to check more ratings and select one with high rating"
+            ]
+        },
+        {
+            "task_id": "1_nearest_bakery",
+            "instruction": "Get directions to the nearest Bakery that has a rating higher than 4.0 on Google Maps. Stop at the screen showing the route.",
+            "type": "single_app",
+            "apps": [
+                "Maps"
+            ],
+            "rubrics": [
+                "Opened Maps",
+                "Searched for bakeries near me",
+                "Found a bakery with a rating higher than 4.0",
+                "Found a bakery that is near to me",
+                "Found the bakery that is nearest to me with a rating higher than 4.0",
+                "Stopped at the screen showing the route to the nearest bakery with a rating higher than 4.0"
+            ],
+            "human_reference_operations": [
+                "open maps",
+                "tap on search bar",
+                "type 'bakery near me'",
+                "tap enter",
+                "tap filters",
+                "tap 'Distance'",
+                "tap 'Apply'",
+                "swipe up to find a bakery with a rating higher than 4.0",
+                "swipe up to again",
+                "tap 'Directions' on the bakery found"
+            ]
+        },
+        {
+            "task_id": "1_thai_duck",
+            "instruction": "Find the best-rated Thai restaurant in Urbana, IL that serves duck cuisine on Google Maps. Review customer comments and compile a summary of positive and negative feedback in 'Keep Notes'.",
+            "type": "multi_app",
+            "apps": [
+                "Maps",
+                "Keep Notes"
+            ],
+            "rubrics": [
+                "Opened Maps",
+                "Searched for Thai restaurants in Urbana, IL",
+                "Checked at least one restaurant's rating",
+                "Confirmed at least one restaurant serves duck dishes",
+                "Checked multiple restaurants' ratings",
+                "Reviewed customer comments of the chosen restaurant",
+                "Opened Notes",
+                "Added a Note with a summary of customer feedback",
+                "The summary includes both positive and negative feedback"
+            ],
+            "human_reference_operations": [
+                "open maps",
+                "tap on search bar",
+                "type 'Thai restaurants in Urbana, IL'",
+                "tap enter",
+                "swipe up to see more results",
+                "tap on a Thai restaurant (Siam Terrace)",
+                "tap Menu",
+                "swipe up to view highlight dishes",
+                "tap show more",
+                "swipe up to see more dishes",
+                "swipe up to see more dishes",
+                "swipe up to see more dishes",
+                "swipe left on the sub-menu bar to nagivate to main courses",
+                "swipe left on the sub-menu bar to nagivate to main courses",
+                "tap Menu-Siam Terrace's House",
+                "swipe up to see more dishes (found Heaven Duck Curry)",
+                "tap Reviews",
+                "swipe up tp see more reviews",
+                "swipe up tp see more reviews to find negative reviews",
+                "swipe up tp see more reviews to find negative reviews",
+                "swipe up tp see more reviews to find negative reviews",
+                "tap more on a review with 4 stars (not 5 stars)",
+                "go back",
+                "swipe up tp see more reviews to find more nagative comments",
+                "swipe up tp see more reviews to find more nagative comments",
+                "swipe up tp see more reviews to find more nagative comments (found one mentioning cold breeze)",
+                "tap home",
+                "open notes",
+                "tap new note",
+                "type 'Summary of comments for Siam Terrace's...'"
+            ]
+        },
+        {
+            "task_id": "1_bakery_birthday_cake",
+            "instruction": "Find me a Bakery that is within 10min drive near me and does birthday cakes on Google Maps. Find the phone number and create a new note in 'Keep Notes' for that.",
+            "type": "multi_app",
+            "apps": [
+                "Maps",
+                "Keep Notes"
+            ],
+            "rubrics": [
+                "Opened Maps",
+                "Found a bakery within 10min drive",
+                "Confirmed they offer birthday cakes",
+                "Retrieved bakery's phone number",
+                "Opened Notes",
+                "Created a new note with the bakery's phone number"
+            ],
+            "human_reference_operations": [
+                "open maps",
+                "tap on search bar",
+                "type 'bakery birthday cakes near me'",
+                "tap enter",
+                "tap Directions to check the distance on the first result",
+                "tap Back (see the drive time is 3 min)",
+                "tap the call button to get the phone number",
+                "tap home",
+                "open notes",
+                "tap new note",
+                "type 'the bakery's phone number...'"
+            ]
+        },
+        {
+            "task_id": "2_segment_anything_cited",
+            "instruction": "Find the most-cited paper that cites the paper 'Segment Anything' on Google Scholar. Stop at the screen showing the paper abstract.",
+            "type": "single_app",
+            "apps": [
+                "Chrome"
+            ],
+            "rubrics": [
+                "Opened a search engine or a browser",
+                "Navigated to Google Scholar",
+                "Searched for 'Segment Anything' paper",
+                "Viewed the citations of 'Segment Anything'",
+                "Viewed multiple citing papers and there citations",
+                "Found the most-cited paper amoung the viewed citing papers",
+                "Stopped at a screen that shows the paper's abstract"
+            ],
+            "human_reference_operations": [
+                "open chrome",
+                "tap on search bar",
+                "type 'Google Scholar'",
+                "tap enter",
+                "tap the first search result",
+                "tap on the search bar in google scholar",
+                "type 'Segment Anything'",
+                "tap enter",
+                "tap on 'Cited by ****'",
+                "swipe up to see more citing papers",
+                "swipe up to see more citing papers",
+                "tap 'Visual instruction tuning' (which is being cited 4600+ times)"
+            ]
+        },
+        {
+            "task_id": "2_llm_agents_survey",
+            "instruction": "Find at least three representative survey papers on LLM agents on Google Scholar, and add their titles to the Notes in 'Keep Notes'.",
+            "type": "multi_app",
+            "apps": [
+                "Chrome",
+                "Keep Notes"
+            ],
+            "rubrics": [
+                "Opened a search engine or a browser",
+                "Navigated to Google Scholar",
+                "Searched for suervey papers on LLM agents",
+                "Correctly identify at least one survey papers",
+                "Correctly identify three survey papers",
+                "Opened Notes",
+                "Added a note with the titles of the found survey papers"
+            ],
+            "human_reference_operations": [
+                "open Chrome",
+                "tap on the search bar",
+                "type 'Google Scholar'",
+                "tap enter",
+                "tap the first search result",
+                "tap on the search bar in Google Scholar",
+                "type 'Survey on LLM agents'",
+                "tap enter",
+                "tap home",
+                "open Notes",
+                "tap new note button",
+                "type the titles of the three survey papers into the note"
+            ]
+        },
+        {
+            "task_id": "2_recipes_chinese",
+            "instruction": "I have some onions, beef, and potatoes in my refrigerator. Can you find me a Chinese-style recipe that uses all three ingredients and can be prepared in under an hour? And find me a video tutorial on YouTube for that. Stop at the screen displaying the video.",
+            "type": "multi_app",
+            "apps": [
+                "Chrome",
+                "YouTube"
+            ],
+            "rubrics": [
+                "Opened Chrome",
+                "Searched for Chinese recipes using onions, beef, and potatoes under 1 hour",
+                "Found a suitable recipe",
+                "Opened YouTube",
+                "Searched for a video tutorial for the chosen recipe",
+                "Selected a relevant tutorial video",
+                "Stopped at a screen showing the video"
+            ],
+            "human_reference_operations": [
+                "open Chrome",
+                "tap on the search bar",
+                "type 'Chinese recipe with onions beef potatoes under 1 hour'",
+                "tap enter",
+                "tap on a link",
+                "tap home",
+                "open YouTube",
+                "tap on the search button",
+                "type the name of the recipe",
+                "tap enter",
+                "tap on a relevant tutorial video"
+            ]
+        }
+    ]
+}
