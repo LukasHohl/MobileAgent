@@ -1,5 +1,5 @@
 {
-    "length": 7,
+    "length": 6,
     "scenario": "RESTAURANT_RECOMMENDATION",
     "scenario_id": 1,
     "tasks": [
@@ -33,34 +33,6 @@
                 "tap 'Apply'",
                 "swipe up to check more ratings",
                 "swipe up to check more ratings and select one with high rating"
-            ]
-        },
-        {
-            "task_id": "1_nearest_bakery",
-            "instruction": "Get directions to the nearest Bakery that has a rating higher than 4.0 on Google Maps. Stop at the screen showing the route.",
-            "type": "single_app",
-            "apps": [
-                "Maps"
-            ],
-            "rubrics": [
-                "Opened Maps",
-                "Searched for bakeries near me",
-                "Found a bakery with a rating higher than 4.0",
-                "Found a bakery that is near to me",
-                "Found the bakery that is nearest to me with a rating higher than 4.0",
-                "Stopped at the screen showing the route to the nearest bakery with a rating higher than 4.0"
-            ],
-            "human_reference_operations": [
-                "open maps",
-                "tap on search bar",
-                "type 'bakery near me'",
-                "tap enter",
-                "tap filters",
-                "tap 'Distance'",
-                "tap 'Apply'",
-                "swipe up to find a bakery with a rating higher than 4.0",
-                "swipe up to again",
-                "tap 'Directions' on the bakery found"
             ]
         },
         {
@@ -113,36 +85,6 @@
                 "open notes",
                 "tap new note",
                 "type 'Summary of comments for Siam Terrace's...'"
-            ]
-        },
-        {
-            "task_id": "1_bakery_birthday_cake",
-            "instruction": "Find me a Bakery that is within 10min drive near me and does birthday cakes on Google Maps. Find the phone number and create a new note in 'Keep Notes' for that.",
-            "type": "multi_app",
-            "apps": [
-                "Maps",
-                "Keep Notes"
-            ],
-            "rubrics": [
-                "Opened Maps",
-                "Found a bakery within 10min drive",
-                "Confirmed they offer birthday cakes",
-                "Retrieved bakery's phone number",
-                "Opened Notes",
-                "Created a new note with the bakery's phone number"
-            ],
-            "human_reference_operations": [
-                "open maps",
-                "tap on search bar",
-                "type 'bakery birthday cakes near me'",
-                "tap enter",
-                "tap Directions to check the distance on the first result",
-                "tap Back (see the drive time is 3 min)",
-                "tap the call button to get the phone number",
-                "tap home",
-                "open notes",
-                "tap new note",
-                "type 'the bakery's phone number...'"
             ]
         },
         {

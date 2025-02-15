@@ -35,6 +35,7 @@ def main(run_name, settings, path, screen_recording):
         args.setting = settings
         args.tasks_json = path
         args.screenrecord = screen_recording
+        args.max_itr = 20
 
     if args.log_root is None:
         args.log_root = f"logs/{REASONING_MODEL}/mobile_agent_E"
@@ -162,6 +163,6 @@ if __name__ == "__main__":
     rn = "my_scenario_test"
     p= "my_scenario.json"
     s = "individual"
-    sr = True
+    sr = False
     main(run_name= rn, settings=s, path = p, screen_recording = sr)
 
