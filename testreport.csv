@@ -1,0 +1,14 @@
+,task_id,model,prompt_tokens,completion_tokens,cached_tokens,cost,result,notes
+0,1_late_night_korean_food,gpt-4o-2024-11-20,351869,13742,0,"1,0170925",failure,"timed out, because opening hours were missing for an entry and it keept searching"
+1,1_late_night_korean_food,gpt-4o-mini,381906,18734,0,"0,0685263",,
+2,1_thai_duck,gpt-4o-2024-11-20,255280,10780,0,"0,746",success?,there was no negative feedback compiled?
+3,1_thai_duck,gpt-4o-mini,241430,11616,0,"0,0431841",,
+4,2_llm_agents_survey,gpt-4o-2024-11-20,143199,5184,0,"0,4098375",success?,"3 survery papers on LLM agents were expected, it delivered at least 2, not sure about the last"
+5,2_llm_agents_survey,gpt-4o-mini,102244,4879,0,"0,018264",,
+6,2_recipes_chinese,gpt-4o-2024-11-20,45650,1516,0,"0,129285",success?,"it skipped searching the recipe on chrome and directly used youtube, a recipe was found, but it did not check if the recipe was correct"
+7,2_recipes_chinese,gpt-4o-mini,45162,2175,0,"0,0080793",,
+8,2_segment_anything_cited,gpt-4o-2024-11-20,182018,6398,0,"0,519025",failure,"it could not click on the link, instead it visited the page of a scientist a couple of times"
+9,2_segment_anything_cited,gpt-4o-mini,136187,6468,0,"0,02430885",,
+10,survery Large Language Model papers,gpt-4o-2024-11-20,121959,6170,0,"0,3665975",success?,"it returned the paper titles, but no all of the abstract, giving 2/3 of the abstract is something?"
+11,survery Large Language Model papers,gpt-4o-mini,83124,4032,0,"0,0148878",,
+,,,,,,"3,36508785",,← huge cost for mediocre results
