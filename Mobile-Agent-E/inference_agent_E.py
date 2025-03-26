@@ -524,7 +524,7 @@ def run_single_task(
         print("selected_tips:", tips)
         print("selected_shortcuts:", initial_shortcuts)
 
-        steps.append(experience_retrieval_log | better_logging((rrrr[1]+rrrr2[1],rrrr[2]+rrrr2[2])))
+        steps.append(experience_retrieval_log | better_logging((0,rrrr[1]+rrrr2[1],rrrr[2]+rrrr2[2])))
         with open(log_json_path, "w") as f:
             json.dump(steps, f, indent=4)
 
@@ -799,7 +799,7 @@ def run_single_task(
                     "new_shortcut": new_shortcut_str,
                     "updated_tips": updated_tips,
                     "duration": experience_reflection_end_time - experience_reflection_start_time,
-                }|better_logging((rrrr[1]+rrrr2[1],rrrr[2]+rrrr2[2])))
+                }|better_logging((0,rrrr[1]+rrrr2[1],rrrr[2]+rrrr2[2])))
                 with open(log_json_path, "w") as f:
                     json.dump(steps, f, indent=4)
                 ## save the updated tips and shortcuts ##
