@@ -139,7 +139,7 @@ def main(run_name, settings, path, screen_recording):
                     persistent_shortcuts_path=persistent_shortcuts_path,
                     perceptor=perceptor,
                     perception_args=default_perceptor_args,
-                    max_itr=args.max_itr,
+                    max_itr= 2*len(task["human_reference_operations"]),
                     max_consecutive_failures=args.max_consecutive_failures,
                     max_repetitive_actions=args.max_repetitive_actions,
                     overwrite_log_dir=args.overwrite_task_log_dir,
@@ -160,9 +160,9 @@ def main(run_name, settings, path, screen_recording):
             json.dump(error_tasks, f, indent=4)
 
 if __name__ == "__main__":
-    rn = "my_scenario_test"
-    p= "my_scenario.json"
-    s = "individual"
+    rn = "my_benchmark"
+    p= "benchmark.json"
+    s = "evolution"
     sr = False
     main(run_name= rn, settings=s, path = p, screen_recording = sr)
 

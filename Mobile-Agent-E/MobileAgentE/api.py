@@ -129,4 +129,4 @@ def inference_chat(chat, model, api_url, token, usage_tracking_jsonl = None, max
             print(f"Failed after {max_retry} retries...")
             return None
     
-    return res_content
+    return (res_content, usage["prompt_tokens"], usage["completion_tokens"], usage["model"])

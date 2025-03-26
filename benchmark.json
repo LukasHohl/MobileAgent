@@ -1,0 +1,433 @@
+{
+    "comment" : "In case I want to compare my agent to Mobile-Agent-E, this benchmark, follows their format, which can be found here: https://github.com/X-PLUG/MobileAgent/tree/main/Mobile-Agent-E/data/Mobile-Eval-E The tasks are either from me or from AndroidArena: https://github.com/AndroidArenaAgent/AndroidArena/tree/main/tasks (tasks: 7, 9, 16, 18) Those test cases were edited.",
+    "length": 15,
+    "scenario": "benchmark",
+    "scenario_id": 2025,
+    "tasks": [
+        {
+            "task_id": 0,
+            "instruction": "Change settings so that the battery percentage is shown in the status bar.",
+            "type": "single_app",
+            "apps": [
+                "Settings"
+            ],
+            "rubrics": [
+                "Battery percentage visible in the status bar."
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'Settings'",
+                "swipe up",
+                "tap on 'Battery'",
+                "tap on 'Battery percentage'"
+            ]
+        },
+        {
+            "task_id": 1,
+            "instruction": "Change settings so that the battery percentage is not shown in the status bar.",
+            "type": "single_app",
+            "apps": [
+                "Settings"
+            ],
+            "rubrics": [
+                "Battery percentage not visible in the status bar."
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'Settings'",
+                "swipe up",
+                "tap on 'Battery'",
+                "tap on 'Battery percentage'"
+            ]
+        },
+        {
+            "task_id": 2,
+            "instruction": "Change the screen brightness level to 0%",
+            "type": "single_app",
+            "apps": [
+                "Settings"
+            ],
+            "rubrics": [
+                "Changed brightness level to 0%."
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'Settings'",
+                "swipe up",
+                "tap on 'Display & touch'",
+                "tap on 'Brightness level'",
+                "swipe slider to the left"
+            ]
+        },
+        {
+            "task_id": 3,
+            "instruction": "Change the screen brightness level to 100%",
+            "type": "single_app",
+            "apps": [
+                "Settings"
+            ],
+            "rubrics": [
+                "Changed brightness level to 100%."
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'Settings'",
+                "swipe up",
+                "tap on 'Display & touch'",
+                "tap on 'Brightness level'",
+                "swipe slider to the right"
+            ]
+        },
+        {
+            "task_id": 4,
+            "instruction": "In Keep Notes create a new note with the content 'I love ice cream.' and the title 'ice cream'.",
+            "type": "single_app",
+            "apps": [
+                "Keep Notes"
+            ],
+            "rubrics": [
+                "Create a new note with the content 'I love ice cream.' and the title 'ice cream'."
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'Keep Notes'",
+                "tap on +",
+                "tap on 'Text'",
+                "type 'I love ice cream.'",
+                "tap on 'Title'",
+                "type 'ice cream'"
+            ]
+        },
+        {
+            "task_id": 5,
+            "instruction": "In Keep Notes create a copy of the note with the content 'I love ice cream.' and the title 'ice cream'.",
+            "type": "single_app",
+            "apps": [
+                "Keep Notes"
+            ],
+            "rubrics": [
+                "Create a new note with the content 'I love ice cream.' and the title 'ice cream'."
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'Keep Notes'",
+                "long_press on note",
+                "tap on '...'",
+                "tap on 'Make a copy'"
+            ]
+        },
+        {
+            "task_id": 6,
+            "instruction": "In Keep Notes delete all notes with the content 'I love ice cream.' and the title 'ice cream'.",
+            "type": "single_app",
+            "apps": [
+                "Keep Notes"
+            ],
+            "rubrics": [
+                "Delete all notes with the content 'I love ice cream.' and the title 'ice cream'."
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'Keep Notes'",
+                "long_press on note",
+                "long_press on note",
+                "tap on '...'",
+                "tap on 'Delete'"
+            ]
+        },
+        {
+            "task_id": 7,
+            "instruction": "Create a new contact with the first name 'John', last name 'Smith', email address 'john@example.com', and phone number '010-123456' in Contacts. Do not forget to save the new contact.",
+            "type": "single_app",
+            "apps": [
+                "Contacts"
+            ],
+            "rubrics": [
+                "Created and saved a new contact with the first name 'John', last name 'Smith', phone number '010-123456', and email address 'john@example.com' in Contacts."
+            ],
+            "human_reference_operations": [
+                "tap on the blue phone icon",
+                "tap on 'Create new contact'",
+                "tap on 'First name'",
+                "type 'John'",
+                "tap on 'Last name'",
+                "type 'Smith'",
+                "swipe up",
+                "tap on 'Phone'",
+                "type '010-123456'",
+                "tap on 'Add Email'",
+                "type 'john@example.com'",
+                "tap on 'save'"
+            ]
+        },
+        {
+            "task_id": 8,
+            "instruction": "Edit the contact 'John Smith': Change his first name to 'Johnathan'. Save the change.",
+            "type": "single_app",
+            "apps": [
+                "Contacts"
+            ],
+            "rubrics": [
+                "Changed and saved contact 'John Smith' to 'Johnathan Smith'"
+            ],
+            "human_reference_operations": [
+                "tap on the blue phone icon",
+                "tap on the pencil icon",
+                "tap on 'John Smith'",
+                "tap on 'First name",
+                "type 'athan'",
+                "tap on 'Save'"
+            ]
+        },
+        {
+            "task_id": 9,
+            "instruction": "Add the existing label 'Friend' to 'Johnathan Smith' in Contacts. Save the change.",
+            "type": "single_app",
+            "apps": [
+                "Contacts"
+            ],
+            "rubrics": [
+                "Deleted 'Johnathan Smith' from Contacts."
+            ],
+            "human_reference_operations": [
+                "tap on the blue phone icon",
+                "tap on 'John Smith'",
+                "tap on the pencil icon",
+                "swipe up",
+                "tap on 'Add to label'",
+                "tap 'Friend'",
+                "tap on 'ok'",
+                "tap on 'Save'"
+            ]
+        },
+        {
+            "task_id": 10,
+            "instruction": "Delete 'Johnathan Smith' from Contacts.",
+            "type": "single_app",
+            "apps": [
+                "Contacts"
+            ],
+            "rubrics": [
+                "Deleted 'Johnathan Smith' from Contacts."
+            ],
+            "human_reference_operations": [
+                "tap on the blue phone icon",
+                "tap on 'John Smith'",
+                "tap on the pencil icon",
+                "tap on '...'",
+                "tap 'Delete'"
+            ]
+        },
+        {
+            "task_id": 11,
+            "instruction": "Send an email to lukas.hohl@tum.de with the subject 'Test' and the content 'Greetings! This is a test!'",
+            "type": "single_app",
+            "apps": [
+                "Gmail"
+            ],
+            "rubrics": [
+                "E-mail successfully sent to lukas.hohl@tum.de with the subject 'Test' and the content 'Greetings! This is a test!'"
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'Gmail'",
+                "tap on 'Compose'",
+                "type 'lukas.hohl@tum.de'",
+                "press enter",
+                "type 'Test'",
+                "press enter",
+                "type 'Greetings! This is a test.'",
+                "tap the arrow icon to send"
+            ]
+        },
+        {
+            "task_id": 12,
+            "instruction": "Open 'tageschau.de' with Chrome. Open the first article on the front page and read the article summary, which is the bold text at the beginning of the article. Using the 'Gmail' app, write an e-mail containing the article's summary to lukas.hohl@tum.de with the subject 'Summary'.",
+            "type": "multi_app",
+            "apps": [
+                "Chrome","Gmail"
+            ],
+            "rubrics": [
+                "E-mail with correct content sent."
+            ],
+            "human_reference_operations": [
+                "tap on the 'Chrome' icon",
+                "tap on the searchbar",
+                "type 'tageschau.de'",
+                "tap on the first article",
+                "swipe up",
+                "press home button",
+                "swipe up to open the app drawer",
+                "tap on 'Gmail'",
+                "tap on 'Compose'",
+                "type 'lukas.hohl@tum.de'",
+                "press enter",
+                "type 'Summary'",
+                "press enter",
+                "type the text of the summary",
+                "tap the arrow icon to send"
+            ]
+        },
+        {
+            "task_id": 13,
+            "instruction": "Delete all emails in 'Sent'.'",
+            "type": "single_app",
+            "apps": [
+                "Gmail"
+            ],
+            "rubrics": [
+                "No more emails in sent."
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'Gmail'",
+                "tap on the options icon",
+                "long_press on email",
+                "long_press on email",
+                "tap on the trash icon"
+            ]
+        },
+        {
+            "task_id": 14,
+            "instruction": "Find out the battery percentage and create a new note in KeepNotes titled 'Battery Percentage' containing the last known value of the battery percentage as content.",
+            "type": "multi_app",
+            "apps": [
+                "Settings", "Keep Notes"
+            ],
+            "rubrics": [
+                "Created note with battery percentage."
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'Settings'",
+                "swipe up",
+                "tap on 'Battery'",
+                "press home button",
+                "swipe up to open the app drawer",
+                "tap on 'Keep Notes'",
+                "tap on +",
+                "tap on 'Text'",
+                "type the battery percentage",
+                "tap on 'Title'",
+                "type 'Battery Percentage'"
+            ]
+        },
+        {
+            "task_id": 15,
+            "instruction": "Go to Google Scholar. Search for 'LLM papers' using Google Scholar. Create a Note in KeepNotes that as content includes the titles of the first four papers about LLMs you find on Google Scholar.",
+            "type": "multi_app",
+            "apps": [
+                "Chrome", "Keep Notes"
+            ],
+            "rubrics": [
+                "Created note with the 4 paper titles. This still counts as finished even if the formatting is not perfect."
+            ],
+            "human_reference_operations": [
+                "tap on the 'Chrome' icon",
+                "swipe up",
+                "tap on the searchbar",
+                "type 'Google Scholar'",
+                "press enter button",
+                "tap on 'Google Scholar' link",
+                "tap on the searchbar",
+                "type 'LLM paper'",
+                "press enter button",
+                "swipe up",
+                "swipe up",
+                "press home button",
+                "swipe up to open the app drawer",
+                "tap on 'Keep Notes'",
+                "tap on +",
+                "type the paper titles"
+            ]
+        },
+        {
+            "task_id": 16,
+            "instruction": "Like the YouTube video titled 'ChatGPT Explained Completely'.",
+            "type": "single_app",
+            "apps": [
+                "YouTube"
+            ],
+            "rubrics": [
+                "fullfilled the task"
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'YouTube'",
+                "tap on 'Search'",
+                "type 'ChatGPT Explained Completely'",
+                "tap enter",
+                "swipe up",
+                "tap on the video",
+                "swipe up",
+                "tap like button"
+            ]
+        },
+        {
+            "task_id": 17,
+            "instruction": "Open the newest video of the artist 'Alligatoah' on YouTube.",
+            "type": "single_app",
+            "apps": [
+                "YouTube"
+            ],
+            "rubrics": [
+                "fullfilled the task"
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'YouTube'",
+                "tap on 'Search'",
+                "type 'Alligatoah'",
+                "swipe up",
+                "tap on the video"
+            ]
+        },
+        {
+            "task_id": 18,
+            "instruction": "Use Maps to search for 'Restaurants' and create a new note in KeepNotes titled 'Name of the nearest restaurant' and the name of the nearest restaurant as content.",
+            "type": "multi_app",
+            "apps": [
+                "Maps",
+                "Keep Notes"
+            ],
+            "rubrics": [
+                "fullfilled the task",
+                "does not really matter if nearest restaurant or nearest open restaurant"
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "open 'Maps'",
+                "tap on searchbar",
+                "type 'Restaurant'",
+                "press enter button",
+                "home button",
+                "open Keep Notes",
+                "tap on +",
+                "tap on text",
+                "type the restaurant name",
+                "tap on 'Title'",
+                "type 'Name of the nearest restaurant''"
+            ]
+        },
+        {
+            "task_id": 19,
+            "instruction": "In Keep Notes delete all notes in 'Notes'.",
+            "type": "single_app",
+            "apps": [
+                "Keep Notes"
+            ],
+            "rubrics": [
+                "All notes in 'Notes' deleted"
+            ],
+            "human_reference_operations": [
+                "swipe up to open the app drawer",
+                "tap on 'Keep Notes'",
+                "long_press on note",
+                "long_press on note",
+                "long_press on note",
+                "tap on '...'",
+                "tap on 'Delete'"
+            ]
+        }
+    ]
+}
