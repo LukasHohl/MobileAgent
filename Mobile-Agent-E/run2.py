@@ -148,13 +148,12 @@ def main(run_name, settings, path, screen_recording):
                     screenrecord=args.screenrecord
                 )
                 print("\n\nDONE:", task["instruction"])
-                print("IMPORTANT: Please reset the device as needed before running the next task!")
-                input("Press Enter to continue to next task ...")
             except Exception as e:
                 print(f"Failed when doing task: {instruction}")
                 print("ERROR:", e)
                 error_tasks.append(task_id)
-        
+            print("IMPORTANT: Please reset the device as needed before running the next task!")
+            input("Press Enter to continue to next task ...")
         error_task_output_path = f"{run_log_dir}/error_tasks.json"
         with open(error_task_output_path, "w") as f:
             json.dump(error_tasks, f, indent=4)

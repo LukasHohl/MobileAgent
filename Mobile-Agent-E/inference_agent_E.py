@@ -506,8 +506,6 @@ def run_single_task(
         chat_experience_retrieval_tips = add_response("user", experience_retrieval_tips_prompt, chat_experience_retrieval_tips, image=None)
         rrrr2 = get_reasoning_model_api_response(chat_experience_retrieval_tips, model=KNOWLEDGE_REFLECTION_MODEL, temperature=temperature, tadi= task_id)
         output_experience_retrieval_tips = rrrr2[0]
-        rrrr[1] += rrrr2[1]
-        rrrr[2] += rrrr2[2]
         parsed_experience_retrieval_tips = experience_retriever_tips.parse_response(output_experience_retrieval_tips)
 
         tips = parsed_experience_retrieval_tips['selected_tips']
@@ -526,7 +524,7 @@ def run_single_task(
         print("selected_tips:", tips)
         print("selected_shortcuts:", initial_shortcuts)
 
-        steps.append(experience_retrieval_log | better_logging(rrrr))
+        steps.append(experience_retrieval_log | better_logging((rrrr[1]+rrrr2[1],rrrr[2]+rrrr2[2])))
         with open(log_json_path, "w") as f:
             json.dump(steps, f, indent=4)
 
@@ -784,8 +782,6 @@ def run_single_task(
                 chat_knowledge_tips = add_response("user", prompt_knowledge_tips, chat_knowledge_tips, image=None)
                 rrrr2 = get_reasoning_model_api_response(chat_knowledge_tips, model=KNOWLEDGE_REFLECTION_MODEL, temperature=temperature, tadi= task_id)
                 output_knowledge_tips = rrrr2[0]
-                rrrr[1] += rrrr2[1]
-                rrrr[2] += rrrr2
                 parsed_result_knowledge_tips = exp_reflector_tips.parse_response(output_knowledge_tips)
                 updated_tips = parsed_result_knowledge_tips['updated_tips']
                 info_pool.tips = updated_tips
@@ -803,7 +799,7 @@ def run_single_task(
                     "new_shortcut": new_shortcut_str,
                     "updated_tips": updated_tips,
                     "duration": experience_reflection_end_time - experience_reflection_start_time,
-                }|better_logging(rrrr))
+                }|better_logging((rrrr[1]+rrrr2[1],rrrr[2]+rrrr2[2])))
                 with open(log_json_path, "w") as f:
                     json.dump(steps, f, indent=4)
                 ## save the updated tips and shortcuts ##
