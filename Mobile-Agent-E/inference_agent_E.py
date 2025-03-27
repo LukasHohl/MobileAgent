@@ -167,7 +167,7 @@ def generate_api(images, query, caption_model=CAPTION_MODEL, taid = "no id"):
             output_usage += response[2]
             cached_usage += response[3]
         my_log(taid, input_usage, output_usage, cached_usage, "gpt-4o-mini")
-    return icon_map
+    return (icon_map, input_usage, output_usage)
 def merge_text_blocks(
     text_list,
     coordinates_list,
@@ -298,6 +298,7 @@ class Perceptor:
         self.adb_path = adb_path
 
     def get_perception_infos(self, screenshot_file, temp_file=TEMP_DIR, taid = "no id"):
+        rrrrr = ("",0,0,0)
         get_screenshot(self.adb_path)
         
         width, height = Image.open(screenshot_file).size
@@ -348,7 +349,8 @@ class Perceptor:
             else:
                 for i in range(len(images)):
                     images[i] = os.path.join(temp_file, images[i])
-                icon_map = generate_api(images, prompt, caption_model=CAPTION_MODEL, taid = taid)
+                rrrrr = generate_api(images, prompt, caption_model=CAPTION_MODEL, taid = taid)
+                icon_map = rrrrr[0]
             for i, j in zip(image_id, range(1, len(image_id)+1)):
                 if icon_map.get(j):
                     perception_infos[i]['text'] = "icon: " + icon_map[j]
@@ -356,7 +358,7 @@ class Perceptor:
         for i in range(len(perception_infos)):
             perception_infos[i]['coordinates'] = [int((perception_infos[i]['coordinates'][0]+perception_infos[i]['coordinates'][2])/2), int((perception_infos[i]['coordinates'][1]+perception_infos[i]['coordinates'][3])/2)]
             
-        return perception_infos, width, height
+        return perception_infos, width, height, rrrrr
 
 ###################################################################################################
 
@@ -673,7 +675,7 @@ def run_single_task(
             screenshot_file = "./screenshot/screenshot.jpg"
             print("\n### Perceptor ... ###\n")
             perception_start_time = time.time()
-            perception_infos, width, height = perceptor.get_perception_infos(screenshot_file, temp_file=TEMP_DIR, taid= task_id)
+            perception_infos, width, height, rrrrr = perceptor.get_perception_infos(screenshot_file, temp_file=TEMP_DIR, taid= task_id)
             shutil.rmtree(TEMP_DIR)
             os.mkdir(TEMP_DIR)
             
@@ -700,6 +702,8 @@ def run_single_task(
                 "screenshot": save_screen_shot_path,
                 "perception_infos": perception_infos,
                 "duration": perception_end_time - perception_start_time,
+                "perception_input_tokens": rrrrr[1],
+                "perception_output_tokens": rrrrr[2]
             })
             print("Perception Infos:", perception_infos)
             with open(log_json_path, "w") as f:
@@ -911,7 +915,7 @@ def run_single_task(
             os.remove(last_screenshot_file)
         os.rename(screenshot_file, last_screenshot_file)
         
-        perception_infos, width, height = perceptor.get_perception_infos(screenshot_file, temp_file=TEMP_DIR, taid= task_id)
+        perception_infos, width, height, rrrrr = perceptor.get_perception_infos(screenshot_file, temp_file=TEMP_DIR, taid= task_id)
         shutil.rmtree(TEMP_DIR)
         os.mkdir(TEMP_DIR)
         
@@ -935,7 +939,9 @@ def run_single_task(
             "operation": "perception",
             "screenshot": f"{log_dir}/screenshots/{iter+1}.jpg",
             "perception_infos": perception_infos,
-            "duration": perception_end_time - perception_start_time
+            "duration": perception_end_time - perception_start_time,
+            "perception_input_tokens": rrrrr[1],
+            "perception_output_tokens": rrrrr[2]
         })
         print("Perception Infos:", perception_infos)
         with open(log_json_path, "w") as f:

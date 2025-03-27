@@ -36,6 +36,7 @@ def main(run_name, settings, path, screen_recording):
         args.tasks_json = path
         args.screenrecord = screen_recording
         args.max_itr = 20
+        # args.enable_experience_retriever = True Do I need this or not?
 
     if args.log_root is None:
         args.log_root = f"logs/{REASONING_MODEL}/mobile_agent_E"
@@ -127,6 +128,7 @@ def main(run_name, settings, path, screen_recording):
             else:
                 task_id = args.tasks_json.split("/")[-1].split(".")[0] + f"_{args.setting}" + f"_{i}"
             try:
+                print("Multitask")
                 run_single_task(
                     instruction,
                     future_tasks=future_tasks,
