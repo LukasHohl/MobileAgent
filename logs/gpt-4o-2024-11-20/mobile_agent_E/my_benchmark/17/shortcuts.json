@@ -1,0 +1,82 @@
+{
+    "Tap_Type_and_Enter": {
+        "name": "Tap_Type_and_Enter",
+        "arguments": [
+            "x",
+            "y",
+            "text"
+        ],
+        "description": "Tap an input box at position (x, y), Type the \"text\", and then perform the Enter operation. Very useful for searching and sending messages!",
+        "precondition": "There is a text input box on the screen with no previously entered content.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "x",
+                    "y": "y"
+                }
+            },
+            {
+                "name": "Type",
+                "arguments_map": {
+                    "text": "text"
+                }
+            },
+            {
+                "name": "Enter",
+                "arguments_map": {}
+            }
+        ]
+    },
+    "Create_Note_in_KeepNotes": {
+        "name": "Create_Note_in_KeepNotes",
+        "arguments": [
+            "title",
+            "content"
+        ],
+        "description": "Create a new note in Google Keep with the specified title and content.",
+        "precondition": "The Google Keep app is open, and the '+' icon for creating a new note is visible on the screen.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": 631,
+                    "y": 1142
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": 561,
+                    "y": 1015
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": 84,
+                    "y": 245
+                }
+            },
+            {
+                "name": "Type",
+                "arguments_map": {
+                    "text": "title"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": 73,
+                    "y": 324
+                }
+            },
+            {
+                "name": "Type",
+                "arguments_map": {
+                    "text": "content"
+                }
+            }
+        ]
+    }
+}
