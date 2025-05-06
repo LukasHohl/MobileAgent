@@ -1,0 +1,49 @@
+{
+    "Tap_Type_and_Enter": {
+        "name": "Tap_Type_and_Enter",
+        "arguments": [
+            "x",
+            "y",
+            "text"
+        ],
+        "description": "Tap an input box at position (x, y), Type the \"text\", and then perform the Enter operation. Very useful for searching and sending messages!",
+        "precondition": "There is a text input box on the screen with no previously entered content.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "x",
+                    "y": "y"
+                }
+            },
+            {
+                "name": "Type",
+                "arguments_map": {
+                    "text": "text"
+                }
+            },
+            {
+                "name": "Enter",
+                "arguments_map": {}
+            }
+        ]
+    },
+    "Open_App_Drawer": {
+        "name": "Open_App_Drawer",
+        "arguments": [
+        ],
+        "description": "Open the App Drawer to find Apps.",
+        "precondition": "The home screen is visible.",
+        "atomic_action_sequence": [
+            {
+                "name": "Swipe",
+                "arguments_map": {
+                    "x1": 360,
+                    "y1": 640,
+                    "x2": 360,
+                    "y2": 0
+                }
+            }
+        ]
+    }
+}

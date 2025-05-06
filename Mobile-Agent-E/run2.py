@@ -7,7 +7,7 @@ import json
 import shutil
 import time
 
-def main(run_name, settings, path, screen_recording):
+def main(run_name, settings, path, screen_recording, psp):
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--seed", type=int, default=1234)
@@ -36,6 +36,7 @@ def main(run_name, settings, path, screen_recording):
         args.tasks_json = path
         args.screenrecord = screen_recording
         args.max_itr = 20
+        # args.specified_shortcuts_path = psp
         # args.enable_experience_retriever = True Do I need this or not?
 
     if args.log_root is None:
@@ -161,9 +162,10 @@ def main(run_name, settings, path, screen_recording):
             json.dump(error_tasks, f, indent=4)
 
 if __name__ == "__main__":
-    rn = "my_benchmark"
+    rn = "my_benchmark2"
     p= "benchmark.json"
     s = "evolution"
     sr = False
-    main(run_name= rn, settings=s, path = p, screen_recording = sr)
-
+    psp = r"Mobile-Agent-E\persistent_shortcuts.json".replace("\\","/")
+    main(run_name= rn, settings=s, path = p, screen_recording = sr, psp = psp)
+    
