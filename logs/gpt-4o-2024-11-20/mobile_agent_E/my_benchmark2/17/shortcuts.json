@@ -1,0 +1,297 @@
+{
+    "Tap_Type_and_Enter": {
+        "name": "Tap_Type_and_Enter",
+        "arguments": [
+            "x",
+            "y",
+            "text"
+        ],
+        "description": "Tap an input box at position (x, y), Type the \"text\", and then perform the Enter operation. Very useful for searching and sending messages!",
+        "precondition": "There is a text input box on the screen with no previously entered content.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "x",
+                    "y": "y"
+                }
+            },
+            {
+                "name": "Type",
+                "arguments_map": {
+                    "text": "text"
+                }
+            },
+            {
+                "name": "Enter",
+                "arguments_map": {}
+            }
+        ]
+    },
+    "Open_App_Drawer": {
+        "name": "Open_App_Drawer",
+        "arguments": [],
+        "description": "Open the App Drawer to find Apps.",
+        "precondition": "The home screen is visible.",
+        "atomic_action_sequence": [
+            {
+                "name": "Swipe",
+                "arguments_map": {
+                    "x1": 360,
+                    "y1": 640,
+                    "x2": 360,
+                    "y2": 0
+                }
+            }
+        ]
+    },
+    "Enable_Battery_Percentage": {
+        "name": "Enable_Battery_Percentage",
+        "arguments": [
+            "search_x",
+            "search_y",
+            "search_text",
+            "toggle_x",
+            "toggle_y"
+        ],
+        "description": "Search for the 'Battery' settings and enable the 'Battery percentage' option to display the battery percentage in the status bar.",
+        "precondition": "The 'Settings' app is open, and the search bar is visible on the screen.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap_Type_and_Enter",
+                "arguments_map": {
+                    "x": "search_x",
+                    "y": "search_y",
+                    "text": "search_text"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "toggle_x",
+                    "y": "toggle_y"
+                }
+            }
+        ]
+    },
+    "Disable_Battery_Percentage": {
+        "name": "Disable_Battery_Percentage",
+        "arguments": [
+            "search_x",
+            "search_y",
+            "search_text",
+            "toggle_x",
+            "toggle_y"
+        ],
+        "description": "Search for the 'Battery' settings and disable the 'Battery percentage' option to stop showing the battery percentage in the status bar.",
+        "precondition": "The 'Settings' app is open, and the search bar is visible on the screen.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap_Type_and_Enter",
+                "arguments_map": {
+                    "x": "search_x",
+                    "y": "search_y",
+                    "text": "search_text"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "toggle_x",
+                    "y": "toggle_y"
+                }
+            }
+        ]
+    },
+    "Add_Label_To_Contact": {
+        "name": "Add_Label_To_Contact",
+        "arguments": [
+            "label_x",
+            "label_y",
+            "checkbox_x",
+            "checkbox_y",
+            "ok_x",
+            "ok_y",
+            "save_x",
+            "save_y"
+        ],
+        "description": "Add a specific label to a contact and save the changes.",
+        "precondition": "The contact edit screen is open, and the 'Add to label' option is visible on the screen.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "label_x",
+                    "y": "label_y"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "checkbox_x",
+                    "y": "checkbox_y"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "ok_x",
+                    "y": "ok_y"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "save_x",
+                    "y": "save_y"
+                }
+            }
+        ]
+    },
+    "Delete_Contact": {
+        "name": "Delete_Contact",
+        "arguments": [
+            "contact_x",
+            "contact_y",
+            "menu_x",
+            "menu_y",
+            "delete_x",
+            "delete_y",
+            "confirm_x",
+            "confirm_y"
+        ],
+        "description": "Delete a contact by selecting it, accessing the options menu, choosing the delete option, and confirming the deletion.",
+        "precondition": "The Contacts app is open, and the contact to be deleted is visible on the screen.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "contact_x",
+                    "y": "contact_y"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "menu_x",
+                    "y": "menu_y"
+                }
+            },
+            {
+                "name": "Swipe",
+                "arguments_map": {
+                    "x1": "menu_x",
+                    "y1": "menu_y",
+                    "x2": "menu_x",
+                    "y2": "delete_y"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "delete_x",
+                    "y": "delete_y"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "confirm_x",
+                    "y": "confirm_y"
+                }
+            }
+        ]
+    },
+    "Create_Note_in_KeepNotes": {
+        "name": "Create_Note_in_KeepNotes",
+        "arguments": [
+            "title_x",
+            "title_y",
+            "title_text",
+            "content_x",
+            "content_y",
+            "content_text",
+            "save_x",
+            "save_y"
+        ],
+        "description": "Create a new note in Keep Notes with a specified title and content, then save the note.",
+        "precondition": "The Keep Notes app is open, and the 'Create Note' button has been tapped to open the note creation interface.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "title_x",
+                    "y": "title_y"
+                }
+            },
+            {
+                "name": "Type",
+                "arguments_map": {
+                    "text": "title_text"
+                }
+            },
+            {
+                "name": "Enter",
+                "arguments_map": {}
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "content_x",
+                    "y": "content_y"
+                }
+            },
+            {
+                "name": "Type",
+                "arguments_map": {
+                    "text": "content_text"
+                }
+            },
+            {
+                "name": "Enter",
+                "arguments_map": {}
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "save_x",
+                    "y": "save_y"
+                }
+            }
+        ]
+    },
+    "Create_Note_with_Content": {
+        "name": "Create_Note_with_Content",
+        "arguments": [
+            "title_x",
+            "title_y",
+            "content_x",
+            "content_y",
+            "content_text"
+        ],
+        "description": "Create a new note in Keep Notes with specified content. This shortcut assumes the Keep Notes app is open, and the 'Create Note' button has been tapped to open the note creation interface.",
+        "precondition": "The Keep Notes app is open, and the 'Create Note' button has been tapped to open the note creation interface.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "title_x",
+                    "y": "title_y"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "content_x",
+                    "y": "content_y"
+                }
+            },
+            {
+                "name": "Type",
+                "arguments_map": {
+                    "text": "content_text"
+                }
+            }
+        ]
+    }
+}
