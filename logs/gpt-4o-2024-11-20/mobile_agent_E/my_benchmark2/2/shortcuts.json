@@ -1,0 +1,106 @@
+{
+    "Tap_Type_and_Enter": {
+        "name": "Tap_Type_and_Enter",
+        "arguments": [
+            "x",
+            "y",
+            "text"
+        ],
+        "description": "Tap an input box at position (x, y), Type the \"text\", and then perform the Enter operation. Very useful for searching and sending messages!",
+        "precondition": "There is a text input box on the screen with no previously entered content.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "x",
+                    "y": "y"
+                }
+            },
+            {
+                "name": "Type",
+                "arguments_map": {
+                    "text": "text"
+                }
+            },
+            {
+                "name": "Enter",
+                "arguments_map": {}
+            }
+        ]
+    },
+    "Open_App_Drawer": {
+        "name": "Open_App_Drawer",
+        "arguments": [],
+        "description": "Open the App Drawer to find Apps.",
+        "precondition": "The home screen is visible.",
+        "atomic_action_sequence": [
+            {
+                "name": "Swipe",
+                "arguments_map": {
+                    "x1": 360,
+                    "y1": 640,
+                    "x2": 360,
+                    "y2": 0
+                }
+            }
+        ]
+    },
+    "Enable_Battery_Percentage": {
+        "name": "Enable_Battery_Percentage",
+        "arguments": [
+            "search_x",
+            "search_y",
+            "search_text",
+            "toggle_x",
+            "toggle_y"
+        ],
+        "description": "Search for the 'Battery' settings and enable the 'Battery percentage' option to display the battery percentage in the status bar.",
+        "precondition": "The 'Settings' app is open, and the search bar is visible on the screen.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap_Type_and_Enter",
+                "arguments_map": {
+                    "x": "search_x",
+                    "y": "search_y",
+                    "text": "search_text"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "toggle_x",
+                    "y": "toggle_y"
+                }
+            }
+        ]
+    },
+    "Disable_Battery_Percentage": {
+        "name": "Disable_Battery_Percentage",
+        "arguments": [
+            "search_x",
+            "search_y",
+            "search_text",
+            "toggle_x",
+            "toggle_y"
+        ],
+        "description": "Search for the 'Battery' settings and disable the 'Battery percentage' option to stop showing the battery percentage in the status bar.",
+        "precondition": "The 'Settings' app is open, and the search bar is visible on the screen.",
+        "atomic_action_sequence": [
+            {
+                "name": "Tap_Type_and_Enter",
+                "arguments_map": {
+                    "x": "search_x",
+                    "y": "search_y",
+                    "text": "search_text"
+                }
+            },
+            {
+                "name": "Tap",
+                "arguments_map": {
+                    "x": "toggle_x",
+                    "y": "toggle_y"
+                }
+            }
+        ]
+    }
+}
