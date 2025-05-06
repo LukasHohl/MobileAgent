@@ -535,7 +535,7 @@ class Operator(BaseAgent):
                     else:
                         atomic_action_args = {}
                         for atomic_arg_key, value in atomic_action["arguments_map"].items():
-                            if value in arguments: # if the mapped key is in the shortcut arguments
+                            if not(arguments is None) and value in arguments: # if the mapped key is in the shortcut arguments
                                 atomic_action_args[atomic_arg_key] = arguments[value]
                             else: # if not: the values are directly passed
                                 atomic_action_args[atomic_arg_key] = value
